@@ -8,16 +8,16 @@ ma = Marshmallow(app)
 class Usuarios(db.Model):
     id = db.Column(db.Integer, primary_key=True, nullable=False)
     correo = db.Column(db.String(30), nullable=False)
-    contrasena = db.Column(db.String(30), nullable=False)
+    contraseña = db.Column(db.String(30), nullable=False)
     usuario = db.Column(db.String(30))
     nombre = db.Column(db.String(30))
     apellido = db.Column(db.String(30))
     telefono = db.Column(db.Integer, nullable=False)
     imagen_perfil = db.Column(db.String(300))
 
-    def __init__(self, correo, contrasena, usuario, nombre, apellido, telefono, imagen_perfil):
+    def __init__(self, correo, contraseña, usuario, nombre, apellido, telefono, imagen_perfil):
         self.correo = correo
-        self.contrasena = contrasena
+        self.contraseña = contraseña
         self.usuario = usuario
         self.nombre = nombre
         self.apellido = apellido
