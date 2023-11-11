@@ -13,14 +13,31 @@ def get_usuarios():
 
 #-------POST-----------
 @users_routes.route('/post', methods=['POST'])
-def create_usuario():
+def create_user():
     try:
-        data = request.get_json()
-        db.session.add(Usuarios(**data))
+        # Obtener los datos del request
+        data = request.json
+
+        # Crear un nuevo usuario con los datos del request
+        new_user = Usuarios(
+            correo=data['correo'],
+            contrasena=data['contrasena'],
+            usuario=data.get('usuario'),
+            nombre=data.get('nombre'),
+            apellido=data.get('apellido'),
+            telefono=data['telefono'],
+            imagen_perfil=data.get('imagen_perfil')
+        )
+
+        # Añadir el nuevo usuario a la base de datos
+        db.session.add(new_user)
         db.session.commit()
-        return usuario_schema.jsonify(Usuarios(**data)), 201
+
+        return {'message': 'Usuario creado exitosamente'}, 201
+
     except Exception as e:
-        return jsonify({"error": "Error al crear el usuario", "details": str(e)}), 400
+        return {'error': str(e)}, 500
+
 
 #-------PUT-----------    
 @users_routes.route('/put/<id>', methods=['PUT'])

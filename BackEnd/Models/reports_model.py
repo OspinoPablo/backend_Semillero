@@ -3,19 +3,19 @@ from db.db import app
 
 class Reportes(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    barrio = db.Column(db.String(300))
-    estrato = db.Column(db.Integer)
-    municipio = db.Column(db.String(200))
-    coordenadas = db.Column(db.String(200))
-    fecha = db.Column(db.Date)
-    hora = db.Column(db.Time)
-    direccion = db.Column(db.String(255))
-    afectados = db.Column(db.Integer)
-    genero_victima = db.Column(db.String(20))
-    tipo_zona = db.Column(db.String(30))
-    archivo_evidencia = db.Column(db.String(255))
-    descripcion = db.Column(db.Text)
-    id_usuario = db.Column(db.Integer, db.ForeignKey('usuarios.id'))  # Usar 'usuarios.id' en lugar de 'Usuarios.id'
+    barrio = db.Column(db.String(300), nullable = False)
+    estrato = db.Column(db.Integer, nullable = False)
+    municipio = db.Column(db.String(200), nullable = False)
+    coordenadas = db.Column(db.String(200), nullable = False)
+    fecha = db.Column(db.Date , nullable = False)
+    hora = db.Column(db.Time, nullable = False)
+    direccion = db.Column(db.String(255), nullable = False)
+    afectados = db.Column(db.Integer, nullable = False)
+    genero_victima = db.Column(db.String(20), nullable = False)
+    tipo_zona = db.Column(db.String(30), nullable = False)
+    archivo_evidencia = db.Column(db.String(255), nullable = False)
+    descripcion = db.Column(db.Text, nullable = False)
+    id_usuario = db.Column(db.Integer, db.ForeignKey('usuarios.id'), nullable = False)  # Usar 'usuarios.id' en lugar de 'Usuarios.id'
     usuario_rel = db.relationship('Usuarios', backref='reportes')
 
     def __init__(self, barrio, estrato, municipio, coordenadas, fecha, hora, direccion, afectados, genero_victima, descripcion, tipo_arma, id_modalidad_delito, id_usuario):
