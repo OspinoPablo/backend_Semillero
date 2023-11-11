@@ -21,7 +21,7 @@ def create_user():
         # Crear un nuevo usuario con los datos del request
         new_user = Usuarios(
             correo=data['correo'],
-            contrasena=data['contrasena'],
+            contraseña=data['contraseña'],
             usuario=data.get('usuario'),
             nombre=data.get('nombre'),
             apellido=data.get('apellido'),
