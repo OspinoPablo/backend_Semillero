@@ -12,7 +12,7 @@ class Usuarios(db.Model):
     usuario = db.Column(db.String(30))
     nombre = db.Column(db.String(30))
     apellido = db.Column(db.String(30))
-    telefono = db.Column(db.Integer, nullable=False)
+    telefono = db.Column(db.BigInteger, nullable=False)
     imagen_perfil = db.Column(db.String(300))
 
     def __init__(self, correo, contraseña, usuario, nombre, apellido, telefono, imagen_perfil):

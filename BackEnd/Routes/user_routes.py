@@ -15,7 +15,7 @@ def get_usuarios():
 @users_routes.route('/post', methods=['POST'])
 def create_user():
     try:
-        # Obtener los datos del request
+    # Obtener los datos del request
         data = request.json
 
         # Crear un nuevo usuario con los datos del request
